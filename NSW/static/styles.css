@@ -1,0 +1,81 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    margin: 20px;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+header nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    background-color: #343a40;
+}
+
+header nav ul li {
+    flex: 1;
+    text-align: center;
+}
+
+header nav ul li a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 15px;
+    transition: background-color 0.3s;
+}
+
+header nav ul li a:hover {
+    background-color: #495057;
+}
+
+
+/* Main Content */
+main {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    min-height: calc(100vh - 200px);
+}
+
+/* Footer */
+footer {
+    background-color: #343a40;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    margin-top: 30px;
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.9em;
+}
+
+.middle {
+    padding: 0px 200px;
+}
+
+/** Table **/
+
+table.doctor-list--table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.doctor-list--table th,
+.doctor-list--table td {
+    text-align: left;
+    padding: 8px;
+}
+
+.doctor-list--table tr:nth-child(even) {
+    background-color: Lightgreen;
+}

@@ -1,0 +1,34 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Doctor Booking System{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'doctor_list' %}">Doctor</a></li>
+                <li><a href="{% url 'book_appointment' %}">Book Appointment</a></li>
+                <li><a href="{% url 'aboutus' %}">About Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}
+        <!-- Content will be inserted here -->
+         <h1>Welcome to the Doctor Booking System</h1>
+    <p>This is the home page.</p>
+        {% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Doctor Booking System</p>
+    </footer>
+</body>
+</html>

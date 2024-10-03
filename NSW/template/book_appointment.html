@@ -1,0 +1,60 @@
+<!-- nsw/templates/nsw/doctor_list.html -->
+{% extends 'base.html' %}
+
+{% block title %}
+    Book Appointment
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Book an Appointment</h1>
+    <p>Booking appointment with Dr. {{ doctor.name }}</p>
+    <form action="{% url 'book_appointment' %}" method="POST">
+        {% csrf_token %}
+        {{ form.as_p}}
+        <button type="submit">Book Appointment</button>
+
+<!--        <div class="form-group">-->
+<!--            <label for="full_name">Full Name</label>-->
+<!--            <input type="text" id="full_name" name="full_name" placeholder="Enter your full name" required>-->
+<!--        </div>-->
+
+<!--        <div class="form-group">-->
+<!--            <label for="email">Email</label>-->
+<!--            <input type="email" id="email" name="email" placeholder="Enter your email" required>-->
+<!--        </div>-->
+
+<!--        <div class="form-group">-->
+<!--            <label for="phone">Phone Number</label>-->
+<!--            <input type="text" id="phone" name="phone" placeholder="Enter your phone number" required>-->
+<!--        </div>-->
+
+<!--        <div class="form-group-inline">-->
+<!--            <div class="form-group">-->
+<!--                <label for="appointment_date">Appointment Date</label>-->
+<!--                <input type="date" id="appointment_date" name="appointment_date" required>-->
+<!--            </div>-->
+<!--        </div>-->
+
+<!--        <div class="form-group">-->
+<!--            <label for="message">Additional Information</label>-->
+<!--            <textarea id="message" name="message" rows="4" placeholder="Enter any additional information or requests"></textarea>-->
+<!--        </div>-->
+<!--<div class="form-group">-->
+<!--            <label for="doctor">Select a docotor</label>-->
+<!--            <select id="doctor" name="doctor" required>-->
+<!--            <option value="">Select a Doctor</option>-->
+<!--                {% for doctor in doctors %}-->
+<!--                    <option value="{{ doctor.id }}">Dr. {{ doctor.user.first_name }}</option>-->
+<!--                {% endfor %}-->
+<!--            </select>-->
+<!--</div>-->
+
+<!--        this is just a random text.-->
+<!--        {{ doctors }}-->
+<!--     <div class="form-group">-->
+<!--            <input type="submit" value="Book Appointment">-->
+<!--        </div>-->
+    </form>
+</div>
+{% endblock %}

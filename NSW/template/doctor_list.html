@@ -1,0 +1,28 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Doctor List{% endblock %}
+
+{% block content %}
+<h1>Doctor List</h1>
+<div class="doctor-list doctor-list--wrapper">
+    <table class="doctor-list--table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th class="middle">Specialization</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for doctor in doctors %}
+            <tr>
+                <td>{{ doctor.name }}</td>
+                <td class="middle">{{ doctor.get_specialty_display }}</td>
+                <td><a href="{% url 'book_appointment' %}?doctor_id={{ doctor.id }}">Book Appointment</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

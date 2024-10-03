@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PayPal Payment</title>
+</head>
+<body>
+    <h1>Doctor Appointment Payment</h1>
+    <p>Appointment with Dr. {{ appointment.doctor.name }} on {{ appointment.appointment_date }}</p>
+
+    <!-- PayPal Button Container -->
+    <div id="paypal-button-container"></div>
+
+    <!-- PayPal SDK Script -->
+    <script src="https://www.paypal.com/sdk/js?client-id={{ settings.PAYPAL_CLIENT_ID }}&currency=USD"></script>
+
+    <script>
+        paypal.Buttons({
+            createOrder: function(data, actions) {
+                return fetch('/create-payment/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': '{{ csrf_token }}',
+                    },
+                    body: JSON.stringify({
+<!--                        'appointment_id': '{{ 1 }}',-->
+                        'appointment_id': '{{ appointment.id }}',
+
+                        'amount': '{{ appointment.total_amount }}'
+                    })
+                }).then(function(response) {
+                    return response.json();
+                }).then(function(data) {
+                    return data.approval_url;
+                });
+            },
+            onApprove: function(data, actions) {
+                // Redirect to the approval URL
+                window.location.href = data.approval_url;
+            },
+            onCancel: function (data) {
+                // Redirect if the user cancels payment
+                window.location.href = '/payment-cancel/';
+            }
+        }).render('#paypal-button-container');
+    </script>
+</body>
+</html>
